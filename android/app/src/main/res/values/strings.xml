@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">ListaDeTarefas</string>
-    <string name="title_activity_main">ListaDeTarefas</string>
-    <string name="package_name">mateusrnm.github.io.listadetarefas</string>
-    <string name="custom_url_scheme">mateusrnm.github.io.listadetarefas</string>
+    <string name="app_name">Conversor de Unidades</string>
+    <string name="title_activity_main">Conversor de Unidades</string>
+    <string name="package_name">mateusrnm.github.io.conversordeunidades</string>
+    <string name="custom_url_scheme">mateusrnm.github.io.conversordeunidades</string>
 </resources>

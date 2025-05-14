@@ -1,5 +1,5 @@
 {
-  "appId": "mateusrnm.github.io.listadetarefas",
-  "appName": "ListaDeTarefas",
-  "webDir": "dist"
+  "appId": "mateusrnm.github.io.conversordeunidades",
+  "appName": "Conversor de Unidades",
+  "webDir": "build"
 }
