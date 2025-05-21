@@ -15,8 +15,6 @@
     const images = [peso, capacidade, comprimento, tempo, computacao, temperatura, velocidade, area, volume, pressao]
 </script>
 
-<center><h1>CONVERSOR DE UNIDADES</h1></center>
-
 <div class="box">
     {#each tiposDeMedidas as item, i}
         <div class="item" onclick={async () => {
@@ -38,9 +36,6 @@
 }
 :global(body) {
     background-color: rgb(46, 44, 44);
-}
-h1 {
-    margin-top: 2%;
 }
 .box {
     position: absolute;

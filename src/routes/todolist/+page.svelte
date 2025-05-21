@@ -30,11 +30,11 @@
 
   function confirmarEdicao() {
     tarefas[tarefas.findIndex(t => t == tarefaEditando)].conteudo = conteudoTarefaEditando
-    tarefaEditando = {conteudo: '', status: -1}
+    tarefaEditando = undefined
   }
 
   function cancelarEdicao() {
-    tarefaEditando = {conteudo: '', status: -1}
+    tarefaEditando = undefined
   }
 
   function excluirTarefa(tarefa) {

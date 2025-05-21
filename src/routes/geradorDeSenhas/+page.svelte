@@ -153,9 +153,6 @@ dialog {
     animation-iteration-count: 1;
     animation-direction: normal;
 }
-:global(body) {
-    background: linear-gradient(90deg, rgba(12,3,163,1) 0%, rgba(4,4,193,1) 35%, rgba(0,212,255,1) 100%);
-}
 .box {
     background-color: white;
     border-radius: 14px;

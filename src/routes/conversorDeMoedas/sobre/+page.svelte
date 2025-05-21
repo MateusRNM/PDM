@@ -15,6 +15,9 @@
 </div>
 
 <style>
+    :global(body){
+      background-color: white;
+    }
     @font-face {
         font-family: Imp;
         src: url('../../lib/assets/impact.ttf')

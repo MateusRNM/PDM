@@ -163,6 +163,9 @@
 <span hidden={dataCot == "" ? true : false}>DATA DA ÚLTIMA COTAÇÃO: {dataCot}</span>
 
 <style>
+    :global(body){
+      background-color: white;
+    }
     @font-face{
         font-family: Imp;
         src: url("../../lib/assets/impact.ttf");
