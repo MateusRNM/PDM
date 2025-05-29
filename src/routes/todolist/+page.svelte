@@ -14,7 +14,7 @@
   let tarefaEditando = $state();
   let tarefaExcluindo;
   let mensagemToast;
-  let tarefasSelecionadas = $state(0);
+  let tarefasSelecionadas = $state(2);
   let tarefaFiltro = $state("");
 
   async function adicionarTarefa() {
@@ -49,7 +49,7 @@
   }
 
   function confirmarExclusao() {
-    tarefas.splice(tarefaExcluindo, 1)
+    tarefas.splice(tarefas.indexOf(tarefaExcluindo), 1)
   }
 
   function alterarStatus(tarefa, status) {
@@ -81,7 +81,8 @@
   </div>
   <div class="row pt-1">
     <p class="fs-6 text-center mt-2">Mostrar apenas:</p>
-    <select class="form-select form-select-sm" aria-label="Small select example" bind:value={tarefasSelecionadas}>
+    <select class="form-select form-select-sm" bind:value={tarefasSelecionadas}>
+      <option value={2}>Todas</option>
       <option value={0}>Pendentes</option>
       <option value={1}>Concluídas</option>
     </select>
@@ -100,7 +101,13 @@
   <div class="container-fluid mt-3 pt-1">
     {#if tarefasSelecionadas == 0}
       <ToDoList tarefas={tarefasPendentes} {tarefaEditando} bind:conteudoTarefaEditando {editarTarefa} {confirmarEdicao} {cancelarEdicao} {alterarStatus} {excluirTarefa} />
+    {:else if tarefasSelecionadas == 1}
+      <ToDoList tarefas={tarefasConcluidas} {tarefaEditando} bind:conteudoTarefaEditando {editarTarefa} {confirmarEdicao} {cancelarEdicao} {alterarStatus} {excluirTarefa} />
     {:else}
+      <ToDoList tarefas={tarefasPendentes} {tarefaEditando} bind:conteudoTarefaEditando {editarTarefa} {confirmarEdicao} {cancelarEdicao} {alterarStatus} {excluirTarefa} />
+      {#if tarefasPendentes.length > 0 && tarefasConcluidas.length > 0}
+        <hr>
+      {/if}
       <ToDoList tarefas={tarefasConcluidas} {tarefaEditando} bind:conteudoTarefaEditando {editarTarefa} {confirmarEdicao} {cancelarEdicao} {alterarStatus} {excluirTarefa} />
     {/if}
   </div>

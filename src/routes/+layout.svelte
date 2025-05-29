@@ -7,20 +7,24 @@
     import { page } from '$app/state';
   
     let { children } = $props();
-  </script>
-
+</script>
+  
   <svelte:head>
     <title>{page.data.title || page.url.pathname}</title>
   </svelte:head>
   
+<div>
   <Header title={page.data.title || "Disp. Móv."}/>
   
   <div class="container-fluid py-5 mt-1 mb-4">
-    {@render children()}
+    <main>
+      {@render children()}
+    </main>
   </div>
-  
+    
   <footer class="navbar bg-body-tertiary fixed-bottom">
     <div class="container-fluid">Made with SvelteKit, CapacitorJS, Drizzle, Sql.js and Bootstrap</div>
   </footer>
   
   <SideBar />
+</div>
