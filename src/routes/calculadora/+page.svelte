@@ -1,51 +1,66 @@
 <script>
+    import typingSound from '$lib/typeSound.mp3'
     let expressao = $state("")
+    let soundOn = $state(true)
+    let sound = null
     
     function addChar(char){
+        typeSound()
         if(expressao == "ERRO") expressao = ""
         expressao += char
-        formatar()
     }
 
     function removeChar(){
+        typeSound()
+        if(expressao == "ERRO"){
+            expressao = ""
+            return
+        }
         expressao = expressao.substr(0, expressao.length-1)
-        formatar()
     }
 
     function clear(){
+        typeSound()
         expressao = ""
     }
 
     function invertSignal(){
+        typeSound()
+        if(expressao == "ERRO"){
+            expressao = ""
+            return
+        }
         let expr = expressao.split('')
         for(let i = expr.length-1; i >= 0; i--){
             if(expr[i] == "-"){
                 expr[i] = "+"
                 expressao = expr.join('')
-                formatar()
                 return 
             } else if(expr[i] == "+"){
                 expr[i] = "-"
                 expressao = expr.join('')
-                formatar()
                 return
-            } else if(expr[i] == "x" || expr[i] == "/"){
+            } else if(expr[i] == "x" || expr[i] == "/" || expr[i] == "^" || expr[i] == "%"){
                 let expr1 = expr.slice(0, i+1)
                 expr1 += "-"
                 let expr2 = expr.slice(i+1, expr.length)
                 expr1 = expr1.concat(expr2)
                 expressao = expr1.replaceAll(",", "")
-                formatar()
                 return
             }
         }
         expressao = "-" + expr.join('')
-        formatar()
     }
 
     function calcular(){
+        typeSound()
+        if(expressao == "ERRO"){
+            expressao = ""
+            return
+        }
         if(expressao == "") return
-        let expressaoFormatada = expressao.replaceAll('x', '*').replaceAll('%', '/100').replaceAll("^", '**')
+        let expressaoFormatada = expressao.replaceAll('x', '*').replaceAll('%', '/100').replaceAll('^', '**')
+        expressaoFormatada = expressaoFormatada.replace(/-(\d+)\*\*(-?\d+)/g, '(-$1)**$2')
         try {
             expressao = String(eval(expressaoFormatada))
         } catch {
@@ -53,10 +68,22 @@
         }
     }
 
-    function formatar(){
-
+    function typeSound(){
+        if(!soundOn) return
+        sound = new Audio(typingSound)
+        sound.playbackRate = 1.2
+        sound.volume = 0.6
+        sound.play()
     }
 </script>
+
+<button class="btn btn-outline-info btn-sm position-relative top-0 start-50 mt-4 translate-middle-x text-center" onclick={() => soundOn = !soundOn}>
+    {#if soundOn}
+        <i style="font-size:25px;" class="bi bi-volume-down-fill"></i>
+    {:else}
+        <i style="font-size:25px;" class="bi bi-volume-mute-fill"></i>
+    {/if}
+</button>
 
 <div class="position-absolute start-50 top-50 translate-middle border border-3 border-black p-1 rounded">
 	<div class="container text-center">
@@ -117,5 +144,6 @@
         margin-bottom: 8%;
         margin-top: 8%;
         text-align: center;
+        letter-spacing: 1px;
     }
 </style>
