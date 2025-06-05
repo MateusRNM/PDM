@@ -133,7 +133,11 @@
 <style>
     @font-face {
         font-family: 'font';
-        src: url('../../lib/font.otf');
+        src: url('../../lib/fonts/font.otf');
+    }
+    @font-face {
+        font-family: 'displayFont';
+        src: url('../../lib/fonts/Calculator.ttf');
     }
     * {
         font-family: 'font';
@@ -145,5 +149,7 @@
         margin-top: 8%;
         text-align: center;
         letter-spacing: 1px;
+        font-family: 'displayFont';
+        font-size: 23px;
     }
 </style>
