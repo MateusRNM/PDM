@@ -61,23 +61,16 @@
         }
         let expr = expressao.split('')
         let num = ""
+        let final = expr.length-1
         for(let i = expr.length-1; i >= 0; i--){
-            if(!chars.includes(expr[i])){
-                let numRounded = String(Math.round(Number(num))).split('')
-                console.log(numRounded)
-                let x = 0
-                for(; i < numRounded.length; x++){
-                    expr[i+x] = numRounded[x]
-                }
-                if (numRounded.length > num.length){
-                    expr.splice(i+x+1, numRounded.length - num.length)
-                }
+            if(!chars.includes(expr[i]) || i == 0){
+                num += expr[i]
+                
                 break
             } else {
                 num += expr[i]
             }
         }
-        expressao = expr.join('')
     }
 
     function calcular(){
