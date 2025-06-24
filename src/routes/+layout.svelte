@@ -1,6 +1,6 @@
 <script>
     import Header from '$lib/components/Header.svelte';
-    import SideBar from '$lib/components/src/lib/components/SideBar.svelte';
+    import SideBar from '$lib/components/SideBar.svelte';
     import 'bootstrap/dist/css/bootstrap.css';
     import 'bootstrap-icons/font/bootstrap-icons.css';
     import * as bootstrap from 'bootstrap';
