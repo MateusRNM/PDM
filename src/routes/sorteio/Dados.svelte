@@ -53,7 +53,7 @@
         }
         
         try {
-            total = eval(expressaoResultados)
+            total = Math.trunc(eval(expressaoResultados))
         } catch {
             error = "Formatação inválida."
             expressao = ""
