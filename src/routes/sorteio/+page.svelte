@@ -3,6 +3,7 @@
     import Dados from "./Dados.svelte";
     import Moeda from "./Moeda.svelte";
     import Nomes from "./Nomes.svelte";
+    import Roleta from "./Roleta.svelte";
     let aba = $state(0)
 </script>
 
@@ -11,6 +12,7 @@
   <option value={1}>Dados</option>
   <option value={2}>Girar Moeda</option>
   <option value={3}>Nomes</option>
+  <option value={4}>Roleta</option>
 </select>
 
 <div style="top: 18%;" class="container position-absolute start-50 translate-middle-x">
@@ -22,6 +24,8 @@
         <Moeda/>
     {:else if aba == 3}
         <Nomes/>
+    {:else if aba == 4}
+        <Roleta/>
     {/if}
 </div>
 
