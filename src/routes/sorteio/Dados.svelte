@@ -1,23 +1,24 @@
 <script>
+    import diceSound from '$lib/dice-roll.mp3'
     let total = $state(0)
     let expressao = $state('')
     let expressaoAnterior = $state('')
     let expressaoResultados = $state('')
     let error = $state('')
+    let audio = $state(null)
     const nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     const symbols = ['+', '-', '*', '/']
 
     function rolarDado(lados, quantidade){
         let res = 0
         for(let i = 0; i < quantidade; i++){
-            let num = Math.trunc(Math.random() * (lados+1) + 1)
-            num = num > lados ? lados : num
-            res += num
+            res += Math.floor(Math.random() * lados + 1)
         }
         return res
     }
 
     function rolar(){
+        audio = new Audio(diceSound).play()
         expressaoAnterior = expressao
         expressaoResultados = ''
         error = ''

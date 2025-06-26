@@ -8,11 +8,10 @@
     function gerar(){
         nums = []
         for(let i = 0; i < qtd; i++){
-            let num = Math.random() * (max+1) + min
-            num = num > max ? max : num
+            let num = Math.random() * (max - min + 1) + min
             num = Number(num.toFixed(3))
             if(apenasint){
-                num = Math.trunc(num)
+                num = Math.floor(num)
             }
             nums.push(num)
         }

@@ -1,21 +1,27 @@
 <script>
     import Numeros from "./Numeros.svelte";
     import Dados from "./Dados.svelte";
+    import Moeda from "./Moeda.svelte";
+    import Nomes from "./Nomes.svelte";
     let aba = $state(0)
 </script>
 
-<div class="btn-group mt-3 position-absolute start-50 translate-middle-x" role="group" aria-label="Basic radio toggle button group">
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked onchange={() => aba = 0}>
-    <label class="btn btn-outline-primary" for="btnradio1">Números</label>
-    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onchange={() => aba = 1}>
-    <label class="btn btn-outline-primary" for="btnradio2">Dados</label>
-</div>
+<select class="form-select mb-3 mt-3" bind:value={aba}>
+  <option value={0}>Números</option>
+  <option value={1}>Dados</option>
+  <option value={2}>Girar Moeda</option>
+  <option value={3}>Nomes</option>
+</select>
 
 <div style="top: 18%;" class="container position-absolute start-50 translate-middle-x">
     {#if aba == 0}
         <Numeros/>
     {:else if aba == 1}
         <Dados/>
+    {:else if aba == 2}
+        <Moeda/>
+    {:else if aba == 3}
+        <Nomes/>
     {/if}
 </div>
 
@@ -27,5 +33,8 @@
     * {
         font-family: 'font';
         font-weight: 100;
+    }
+    label {
+        font-size: 15px;
     }
 </style>
