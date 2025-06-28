@@ -30,7 +30,7 @@
 </script>
 
 <div class="container mt-5">
-    Palavra do dia: <a href={`/dicionario/${palavraDoDia}`}>{palavraDoDia}</a>
+    Palavra do dia: <a href={`/dicionario/palavra?palavra=${palavraDoDia}`}>{palavraDoDia}</a>
     <hr/>
 	<div class="input-group mb-3">
 		<input
@@ -56,7 +56,7 @@
 		<ul class="list-group">
 			<center>
 				{#each filtrados as palavra}
-					<li class="list-group-item"><a href={`/dicionario/${palavra}`}>{palavra}</a></li>
+					<li class="list-group-item"><a href={`/dicionario/palavra?palavra=${palavra}`}>{palavra}</a></li>
 				{/each}
 			</center>
 		</ul>

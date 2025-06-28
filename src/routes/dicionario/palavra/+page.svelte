@@ -2,7 +2,7 @@
     import { dicionario } from "$lib/dicionario";
     import { page } from "$app/state";
 	import { goto } from "$app/navigation";
-    let palavra = $state(page.params.palavra)
+    let palavra = $state(page.url.searchParams.get('palavra'))
     let definicoes = $state(dicionario.get(palavra))
 </script>
 

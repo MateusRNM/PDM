@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Conversor de Unidades</string>
-    <string name="title_activity_main">Conversor de Unidades</string>
-    <string name="package_name">mateusrnm.github.io.conversordeunidades</string>
-    <string name="custom_url_scheme">mateusrnm.github.io.conversordeunidades</string>
+    <string name="app_name">App PDM</string>
+    <string name="title_activity_main">App PDM</string>
+    <string name="package_name">mateusrnm.github.io.pdm</string>
+    <string name="custom_url_scheme">mateusrnm.github.io.pdm</string>
 </resources>

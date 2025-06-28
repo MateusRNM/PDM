@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "mateusrnm.github.io.conversordeunidades"
+    namespace "mateusrnm.github.io.pdm"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "mateusrnm.github.io.conversordeunidades"
+        applicationId "mateusrnm.github.io.pdm"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
