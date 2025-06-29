@@ -4,6 +4,7 @@
     import Moeda from "./Moeda.svelte";
     import Nomes from "./Nomes.svelte";
     import Roleta from "./Roleta.svelte";
+    import Equipes from "./Equipes.svelte";
     let aba = $state(0)
 </script>
 
@@ -13,6 +14,7 @@
   <option value={2}>Girar Moeda</option>
   <option value={3}>Nomes</option>
   <option value={4}>Roleta</option>
+  <option value={5}>Equipes</option>
 </select>
 
 <div style="top: 18%;" class="container position-absolute start-50 translate-middle-x">
@@ -26,6 +28,8 @@
         <Nomes/>
     {:else if aba == 4}
         <Roleta/>
+    {:else if aba == 5}
+        <Equipes/>
     {/if}
 </div>
 
@@ -37,8 +41,5 @@
     * {
         font-family: 'font';
         font-weight: 100;
-    }
-    label {
-        font-size: 15px;
     }
 </style>
