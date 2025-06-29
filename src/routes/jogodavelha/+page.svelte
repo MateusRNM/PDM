@@ -1,4 +1,5 @@
 <script>
+    import pencilSound from '$lib/pencilSound.mp3'
     let tabuleiro = $state([["", "", ""], ["", "", ""], ["", "", ""]])
     let rodada = $state(1)
     let status = $state(0) // 0 = Vez do jogador 1 (X); 1 = Vez do jogador 2 (O); 2 = Partida finalizada;
@@ -8,7 +9,7 @@
 
     function jogar(i, j){
         if(tabuleiro[i][j] != "" || status == 2) return
-        audio = new Audio().play()
+        audio = new Audio(pencilSound).play()
         tabuleiro[i][j] = status == 0 ? "X" : "O"
         status = status == 0 ? 1 : 0
         verificarResultado()
