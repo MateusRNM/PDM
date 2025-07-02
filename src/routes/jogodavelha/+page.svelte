@@ -5,10 +5,16 @@
     let status = $state(0) // 0 = Vez do jogador 1 (X); 1 = Vez do jogador 2 (O); 2 = Partida finalizada;
     let resultado = $state()
     let audio = $state(null)
+    let erro = $state()
     const colors = ["#0349fc", "#d10a3f", "#787878"]
 
     function jogar(i, j){
-        if(tabuleiro[i][j] != "" || status == 2) return
+        erro = ""
+        if(status == 2) return
+        if(tabuleiro[i][j] != ""){
+            erro = "Casa já ocupada!"
+            return
+        } 
         audio = new Audio(pencilSound).play()
         tabuleiro[i][j] = status == 0 ? "X" : "O"
         status = status == 0 ? 1 : 0
@@ -58,7 +64,7 @@
 
 <div class="container mt-5">
     <center><p>Rodada: {rodada}</p></center>
-    <table style="height: 35vh;" class="table table-bordered text-center">
+    <table class="table table-bordered text-center">
         <tbody>
             {#each tabuleiro as linha, i}
                 <tr>
@@ -76,6 +82,9 @@
     {/if}
     {#if status == 2}
         <center><button class="btn btn-primary mt-3" onclick={resetar}>JOGAR NOVAMENTE</button></center>
+    {/if}
+    {#if erro != ""}
+        <center><p style="color:red;">{erro}</p></center>
     {/if}
 </div>
 
@@ -103,5 +112,8 @@
         max-width: 40vw;
         height: 13vh;
         max-height: 13vh;
+    }
+    table {
+        height: 35vh;
     }
 </style>
