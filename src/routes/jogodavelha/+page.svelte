@@ -12,6 +12,8 @@
         erro = ""
         if(status == 2) return
         if(tabuleiro[i][j] != ""){
+            const el = document.getElementById(`casa-${i}${j}`)
+            el.style.animationPlayState = "running"
             erro = "Casa já ocupada!"
             return
         } 
@@ -69,7 +71,7 @@
             {#each tabuleiro as linha, i}
                 <tr>
                     {#each linha as casa, j}
-                        <td><button style={`color: ${casa == "X" ? colors[0] : colors[1]};`} class="casa" onclick={() => jogar(i, j)}>{casa}</button></td>
+                        <td onanimationiteration={(el) => el.srcElement.style.animationPlayState = "paused"} id={`casa-${i}${j}`}><button style={`color: ${casa == "X" ? colors[0] : colors[1]};`} class="casa" onclick={() => jogar(i, j)}>{casa}</button></td>
                     {/each}
                 </tr>
             {/each}
@@ -112,8 +114,23 @@
         max-width: 40vw;
         height: 13vh;
         max-height: 13vh;
+        animation-name: anim;
+        animation-iteration-count: infinite;
+        animation-duration: 1s;
+        animation-play-state: paused;
     }
     table {
         height: 35vh;
+    }
+    @keyframes anim {
+        0% {
+            background-color: "";
+        }
+        25% {
+            background-color: rgb(163, 8, 8);
+        }
+        100% {
+            background-color: "";
+        }
     }
 </style>
