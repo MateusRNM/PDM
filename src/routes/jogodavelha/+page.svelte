@@ -1,5 +1,8 @@
 <script>
     import pencilSound from '$lib/pencilSound.mp3'
+    import 'bootstrap/dist/css/bootstrap.css';
+    import 'bootstrap-icons/font/bootstrap-icons.css';
+    import * as bootstrap from 'bootstrap';
     let tabuleiro = $state([["", "", ""], ["", "", ""], ["", "", ""]])
     let rodada = $state(1)
     let status = $state(0) // 0 = Vez do jogador 1 (X); 1 = Vez do jogador 2 (O); 2 = Partida finalizada;
@@ -66,17 +69,25 @@
 
 <div class="container mt-5">
     <center><p>Rodada: {rodada}</p></center>
-    <table class="table table-bordered text-center">
+    <table class="table text-center">
         <tbody>
             {#each tabuleiro as linha, i}
                 <tr>
                     {#each linha as casa, j}
-                        <td onanimationiteration={(el) => el.srcElement.style.animationPlayState = "paused"} id={`casa-${i}${j}`}><button style={`color: ${casa == "X" ? colors[0] : colors[1]};`} class="casa" onclick={() => jogar(i, j)}>{casa}</button></td>
+                        <td 
+                            class={j >= 1 ? "lines" : ""} style={i != 2 ? "" : "border-bottom-width:0px;"} 
+                            onanimationiteration={(el) => { el.srcElement.style.animationPlayState = "paused" }} 
+                            id={`casa-${i}${j}`}>
+                             <button style={`color: ${casa == "X" ? colors[0] : colors[1]};`} class="casa" onclick={() => jogar(i, j)}>
+                                {casa}
+                            </button>
+                        </td>
                     {/each}
                 </tr>
             {/each}
         </tbody>
     </table>
+    
     {#if status == 2}
         <center><p style={`color: ${colors[resultado]};`}>{resultado == 2 ? 'Empate!' : `Jogador ${resultado+1} venceu!`}</p></center>
     {:else}
@@ -116,8 +127,12 @@
         max-height: 13vh;
         animation-name: anim;
         animation-iteration-count: infinite;
-        animation-duration: 1s;
+        animation-duration: 1.2s;
         animation-play-state: paused;
+    }
+    .lines {
+        border-left-width: 1px; 
+        border-bottom-width: 1px;
     }
     table {
         height: 35vh;
@@ -126,7 +141,7 @@
         0% {
             background-color: "";
         }
-        25% {
+        50% {
             background-color: rgb(163, 8, 8);
         }
         100% {
